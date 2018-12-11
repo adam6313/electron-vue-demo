@@ -33,7 +33,7 @@ export default {
           type: 'password',
           value: '',
         },
-      }
+      },
     };
   },
   methods: {
@@ -48,9 +48,17 @@ export default {
       if (isEmpty(resp)) {
         return;
       }
+      const hashKey = 'KEYS';
       this.Api_Data = resp.data;
+
+      // set localStorage
+      localStorage.setObjectHash(hashKey, resp.data)
+
+      // get localStorage
+      const Values = localStorage.getObjectHash(hashKey);
+      console.log(Values)
     },
-  }
+  },
 };
 </script>
 
